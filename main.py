@@ -7,7 +7,6 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     processing()
-    return "ok"
 
 
 if __name__ == '__main__':
