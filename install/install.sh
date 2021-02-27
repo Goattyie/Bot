@@ -8,4 +8,4 @@ pyenv local 3.5.10
 pip3 install --upgrade pip
 pip3 install tensorflow==1.5
 pip3 uninstall numpy
-pip3 install numpy==1.16.4 flask h5py cython pyyaml
+pip3 install numpy==1.16.4 flask h5py cython pyyaml pillow requests
