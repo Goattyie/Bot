@@ -1,6 +1,8 @@
 import numpy as np
 import tensorflow as tf
+
 from tensorflow import keras as k
+from tensorflow.python.keras.preprocessing.image import load_img, img_to_array
 
 
 def machine_learning():
@@ -27,4 +29,22 @@ def machine_learning():
 
 def processing():
     model = k.models.load_model('model.hdf5')
-    # result = model.predict(picture)
+    img = load_img('3.png') #Изображение 28 на 28
+    return give_answer(img, model)
+    
+
+
+def give_answer(img,model):
+    
+
+    img_array = img_to_array(img) #переводим картинку в массив
+    img_array = img_array[:,:,0] #Берем один из цветовых каналов
+
+    img_array = img_array.reshape(1,28,28,1) #меняем размерность массива
+    img_array = img_array.astype('float32')/255 #приводим к диапазону чисел от 0 до 1
+
+    img_array = abs(img_array - 1) #0-белое, 1-черное
+
+    result = model.predict(img_array)
+
+    return str(np.argmax(result)) #Возвращает ответ нейросети
