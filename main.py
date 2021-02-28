@@ -7,6 +7,7 @@ from flask import Flask, request
 from api import send_message
 from PIL import Image
 import requests
+
 app = Flask(__name__)
 
 
@@ -42,7 +43,7 @@ def work():
             try:
                 send_message('peer_id', json['object']['message']['from_id'], predict(image))
             except:
-               print('error')
+                print('error')
 
     return 'ok'
 

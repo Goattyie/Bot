@@ -42,7 +42,6 @@ def give_answer(img, model):
 
     img_array = abs(img_array - 1)
 
-    with tf.get_default_graph().as_default():
-        result = model.predict(img_array)
+    result = model.predict(img_array)
 
     return str(np.argmax(result))
