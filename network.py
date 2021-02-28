@@ -28,6 +28,7 @@ def machine_learning():
 
 
 def predict(image):
+    k.backend.clear_session()
     model = k.models.load_model('model.hdf5')
     return give_answer(image, model)
     
@@ -41,6 +42,7 @@ def give_answer(img, model):
 
     img_array = abs(img_array - 1)
 
-    result = model.predict(img_array)
+    with tf.get_default_graph().as_default():
+        result = model.predict(img_array)
 
     return str(np.argmax(result))

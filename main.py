@@ -1,6 +1,7 @@
 from network import machine_learning, predict
 
 from tensorflow.python.keras.preprocessing.image import load_img
+from tensorflow import keras as k
 from flask import Flask, request
 from PIL import Image
 import requests
@@ -34,6 +35,7 @@ def work():
             
             img = Image.open('image.png').resize((28, 28), Image.ANTIALIAS)
             img.save('image.png')
+            
             image = load_img('image.png')
 
             try:
